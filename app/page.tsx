@@ -1,3 +1,4 @@
+import prisma from "@/lib/prisma";
 import { Button } from "@radix-ui/themes";
 import React from "react";
 
