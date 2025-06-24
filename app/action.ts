@@ -12,3 +12,7 @@ export const createTask = async (prevState: unknown, formData: FormData) => {
   await prisma.task.create({ data });
   redirect("/");
 };
+export const markTaskAsComplete = async (id: string) => {
+  await prisma.task.update({ where: { id }, data: { isCompleted: true } });
+  redirect("/");
+};

@@ -1,5 +1,6 @@
 import prisma from "@/lib/prisma";
 import { Badge, Table } from "@radix-ui/themes";
+import Link from "next/link";
 import React from "react";
 
 const TaskTable = async () => {
@@ -18,7 +19,9 @@ const TaskTable = async () => {
       <Table.Body>
         {tasks.map((task) => (
           <Table.Row>
-            <Table.RowHeaderCell>#{task.id.split("-")[0]}</Table.RowHeaderCell>
+            <Table.RowHeaderCell className="underline">
+              #<Link href={`/tasks/${task.id}`}>{task.id.split("-")[0]}</Link>
+            </Table.RowHeaderCell>
             <Table.Cell>{task.title}</Table.Cell>
             <Table.Cell>
               <Badge size={"2"} color={task.isCompleted ? "green" : "red"}>
