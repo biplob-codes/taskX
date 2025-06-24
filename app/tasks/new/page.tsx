@@ -1,7 +1,7 @@
 "use client";
 import { Button, TextArea, TextField } from "@radix-ui/themes";
 import React, { useActionState } from "react";
-import { createTask } from "../action";
+import { createTask } from "../../action";
 
 const NewTaskPage = () => {
   const [state, action, isPending] = useActionState(createTask, undefined);

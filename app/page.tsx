@@ -7,7 +7,7 @@ import TaskTable from "./TaskTable";
 const Home = () => {
   return (
     <div>
-      <Link href="/newtask">
+      <Link href="/tasks/new">
         <Button color="violet">New Task</Button>
       </Link>
       <TaskTable />

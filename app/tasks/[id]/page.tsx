@@ -37,7 +37,9 @@ const TaskDetailsPage = async ({
         <span className="text-gray-500 font-semibold mr-2">Created At:</span>
         {task?.createdAt.toISOString().split("T")[0]}
       </p>
-      <TaskButton isCompleted={task?.isCompleted!} taskId={task?.id!} />
+      {!task?.isCompleted && (
+        <TaskButton isCompleted={task?.isCompleted!} taskId={task?.id!} />
+      )}
     </div>
   );
 };
