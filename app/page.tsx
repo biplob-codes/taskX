@@ -1,11 +1,14 @@
 import prisma from "@/lib/prisma";
 import { Button } from "@radix-ui/themes";
+import Link from "next/link";
 import React from "react";
 
 const Home = () => {
   return (
     <div>
-      <Button>Click me</Button>
+      <Link href="/newtask">
+        <Button color="violet">New Task</Button>
+      </Link>
     </div>
   );
 };
