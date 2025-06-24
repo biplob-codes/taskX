@@ -2,7 +2,7 @@ import prisma from "@/lib/prisma";
 import { Badge, Table } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
-
+export const dynamic = "force-dynamic";
 const TaskTable = async () => {
   const tasks = await prisma.task.findMany();
 
@@ -18,7 +18,7 @@ const TaskTable = async () => {
       </Table.Header>
       <Table.Body>
         {tasks.map((task) => (
-          <Table.Row>
+          <Table.Row key={task.id}>
             <Table.RowHeaderCell className="underline">
               #<Link href={`/tasks/${task.id}`}>{task.id.split("-")[0]}</Link>
             </Table.RowHeaderCell>

@@ -1,9 +1,8 @@
-import prisma from "@/lib/prisma";
 import { Button } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
 import TaskTable from "./TaskTable";
-
+export const dynamic = "force-dynamic";
 const Home = () => {
   return (
     <div>
