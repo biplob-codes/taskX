@@ -8,7 +8,8 @@ export const createTask = async (prevState: unknown, formData: FormData) => {
   const description = formData.get("description");
   const task = { title, description };
   const { success, data, error } = createTaskSchema.safeParse(task);
-  if (!success) return;
+  if (!success)
+    return { success: false, errors: error.issues.map((i) => i.message) };
   await prisma.task.create({ data });
   redirect("/");
 };
