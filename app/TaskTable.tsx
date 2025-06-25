@@ -7,7 +7,7 @@ const TaskTable = async () => {
   const tasks = await prisma.task.findMany();
 
   return (
-    <Table.Root className="mt-5">
+    <Table.Root>
       <Table.Header>
         <Table.Row>
           <Table.ColumnHeaderCell>ID</Table.ColumnHeaderCell>
