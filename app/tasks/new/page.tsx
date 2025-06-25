@@ -14,6 +14,7 @@ const NewTaskPage = () => {
 
   return (
     <div className="max-w-lg">
+      <h1 className="mb-4 text-xl text-gray-600">Create a new Task</h1>
       <form action={action}>
         <TextField.Root placeholder="Title" className="mb-3" name="title" />
         <TextArea
