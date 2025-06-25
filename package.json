@@ -2,11 +2,13 @@
   "name": "cicd-practise",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.11.1",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:generate": "prisma generate --no-engine"
   },
   "dependencies": {
     "@prisma/client": "^6.10.1",
