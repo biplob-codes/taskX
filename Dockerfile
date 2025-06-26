@@ -4,8 +4,8 @@ RUN corepack enable pnpm
 COPY package*.json pnpm-lock.yaml ./
 COPY prisma ./prisma
 RUN pnpm install
-RUN pnpm prisma generate --no-engine
+RUN pnpm run db:generate
 COPY . .
 RUN pnpm build
-CMD ["pnpm","start"]
+CMD ["sh","-c","pnpm run start-app"]
 
