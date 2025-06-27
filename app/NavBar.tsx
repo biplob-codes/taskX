@@ -1,3 +1,4 @@
+import { Button } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
 
@@ -8,7 +9,12 @@ const NavBar = () => {
         <li className="text-gray-700">
           <Link href="/">TaskX</Link>
         </li>
-        <li>Profile</li>
+        <li className="flex gap-3 items-center">
+          <Button>Signin</Button>
+          <Button color="pink" variant="soft">
+            Signup
+          </Button>
+        </li>
       </ul>
     </nav>
   );
