@@ -27,14 +27,16 @@ jobs:
         run: pnpm install
 
       - name: Install Vercel CLI
-        run: npm install --global vercel@latest
+        run: pnpm install --global vercel@latest
+      - name: Install Dotenv CLI
+        run: pnpm install --global dotenv-cli
 
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
       - name: Migrate Database
-        run: pnpm run db:migrate
+        run: dotenv -e .env.local -- pnpm run db:migrate
       - name: Generate Prisma Client
-        run: pnpm run db:generate
+        run: dotenv -e .env.local --  pnpm run db:generate
 
       - name: Build Project Artifacts
         run: vercel build  --token=${{ secrets.VERCEL_TOKEN }}
