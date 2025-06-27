@@ -1,16 +1,18 @@
 name: Feature Deployment
 env:
-  VERCEL_TEAM_ID: ${{ secrets.VERCEL_TEAM_ID }}
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_TEAM_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 on:
-  push:
+  pull_request:
     branches:
       - "feature/**"
+    types: [closed]
 
 jobs:
   Deploy-Feature:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
