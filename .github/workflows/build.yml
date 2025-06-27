@@ -32,14 +32,9 @@ jobs:
         with:
           node-version: "20"
           cache: "pnpm"
-      - name: Installing Dependecies
+      - name: Installing Dependencies
         run: pnpm install
-      - name: Wait For Postgres
-        run: |
-          until pg_isready -h localhost -p 5432; do
-              echo "Waiting for postgres..."
-              sleep 2
-          done
+
       - name: Migrate Database
         run: pnpm run db:migrate
       - name: Generating Prisma Client
