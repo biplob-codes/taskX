@@ -1,5 +1,4 @@
-import { Button } from "@radix-ui/themes";
-
+import { Button } from "@radix-ui/themes
 import React from "react";
 
 const NavBar = () => {
@@ -13,9 +12,16 @@ const NavBar = () => {
             Signup
           </Button>
         </li>
+        <li className="flex gap-3 items-center">
+          <Button>Signin</Button>
+          <Button color="pink" variant="soft">
+            Signup
+          </Button>
+        </li>
+
       </ul>
     </nav>
   );
-};
+}; 
 
 export default NavBar;
