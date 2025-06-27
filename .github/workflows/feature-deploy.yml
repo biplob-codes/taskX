@@ -1,0 +1,45 @@
+name: Feature Deployment
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+on:
+  pull_request:
+    branches:
+      - "feature/**"
+    types: [closed]
+
+jobs:
+  Deploy-Feature:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v2
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Install Vercel CLI
+        run: pnpm install --global vercel@latest
+      - name: Install Dotenv CLI
+        run: pnpm install --global dotenv-cli
+
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Migrate Database
+        run: dotenv -e .env.local -- pnpm run db:migrate
+      - name: Generate Prisma Client
+        run: dotenv -e .env.local --  pnpm run db:generate
+
+      - name: Build Project Artifacts
+        run: vercel build  --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt  --token=${{ secrets.VERCEL_TOKEN }}
