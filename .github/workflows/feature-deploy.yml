@@ -34,9 +34,9 @@ jobs:
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
       - name: Migrate Database
-        run: dotenv -e .env.local -- pnpm run db:migrate
+        run: dotenv -e .vercel/.env.preview.local -- pnpm run db:migrate
       - name: Generate Prisma Client
-        run: dotenv -e .env.local --  pnpm run db:generate
+        run: dotenv -e .vercel/.env.preview.local --  pnpm run db:generate
 
       - name: Build Project Artifacts
         run: vercel build  --token=${{ secrets.VERCEL_TOKEN }}
