@@ -9,7 +9,9 @@ const Home = () => {
       <Link href="/tasks/new">
         <Button color="violet">New Task</Button>
       </Link>
-      <h1 className="mt-4 text-xl text-gray-600">Your created tasks are:</h1>
+      <h1 className="mt-4 text-xl text-gray-600">
+        Your created tasks are below:
+      </h1>
       <TaskTable />
     </div>
   );
